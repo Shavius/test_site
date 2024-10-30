@@ -69,6 +69,8 @@ jobs:
                   repoToken: ${{ secrets.GITHUB_TOKEN }}
                   firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAVA_TEST_SITE }}
                   projectId: shava-test-site
+                  expires: 1d
+                  channelId: Pre-Deploy
 
     FireBase-Deploy:
         environment: FireBase-Deploy
