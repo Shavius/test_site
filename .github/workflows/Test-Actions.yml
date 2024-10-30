@@ -1,0 +1,16 @@
+name: Test-Actions
+
+on:
+    workflow_dispatch:
+        inputs:
+            release_notes:
+                type: string
+                required: true
+                default: Release Default Notes
+
+jobs:
+    EchoTest1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo test 1
+              run: echo test 1 - ${{ inputs.release_notes }}
