@@ -16,14 +16,26 @@ jobs:
     MainLintTestBuild:
         runs-on: ubuntu-latest
         steps:
-            - name: Echo Lint
-              run: echo lint
+            - name: Get repository code
+              uses: actions/checkout@v4
 
-            - name: Echo Test
-              run: echo test
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
 
-            - name: Echo Build
-              run: echo build
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Lint
+              run: npm run all
+
+            - name: Start Test
+              run: npm run test-c
+
+            - name: Start Build
+              run: npm run build
 
     FireBase-Pre-Deploy:
         environment: FireBase-Pre-Deploy
@@ -31,8 +43,26 @@ jobs:
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
-            - name: Echo FB-Pre-Deploy
-              run: echo FB-Pre-Deploy
+            - name: Get repository code
+              uses: actions/checkout@v4
+
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Build
+              run: npm run build
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  path: dist
+                  name: dist-FB-Pre-Deploy
 
     FireBase-Deploy:
         environment: FireBase-Deploy
@@ -40,5 +70,23 @@ jobs:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
-            - name: Echo FB-Deploy
-              run: echo FB-Deploy
+            - name: Get repository code
+              uses: actions/checkout@v4
+
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Build
+              run: npm run build
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  path: dist
+                  name: dist-FB-Deploy
