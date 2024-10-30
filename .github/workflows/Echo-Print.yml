@@ -18,3 +18,11 @@ jobs:
         steps:
             - name: Echo Test 2
               run: echo test 2
+
+    EchoTest3:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
+        needs: [EchoTest1, EchoTest2]
+        steps:
+            - name: Echo Test 3
+              run: echo test 3
