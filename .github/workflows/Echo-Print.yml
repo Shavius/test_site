@@ -1,0 +1,20 @@
+name: Echo-Print
+
+on:
+    push:
+        branches: ["main", "develop"]
+    pull_request:
+        branches: ["main", "develop"]
+
+jobs:
+    EchoTest1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Test 1
+              run: echo test 1
+
+    EchoTest2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Test 2
+              run: echo test 2
