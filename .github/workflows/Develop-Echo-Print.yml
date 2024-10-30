@@ -1,0 +1,26 @@
+name: Develop-Echo-Print
+
+on:
+    push:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["develop"]
+    pull_request:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["develop"]
+
+jobs:
+    DevelopEchoPrint1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Test 1
+              run: echo test 1
+
+    DevelopEchoPrint2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Test 2
+              run: echo test 2
