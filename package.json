@@ -15,7 +15,10 @@
 		"lint:fix": "eslint --ext ts --fix ./",
 		"pre:fix": "prettier --write ./",
 		"pre": "prettier --check ./",
-		"all": "npm run lint & npm run pre"
+		"all": "npm run lint & npm run pre",
+		"firebase": "firebase",
+		"deploy": "firebase deploy",
+		"fb:list": "firebase hosting:channel:list"
 	},
 	"keywords": [],
 	"author": "",
@@ -36,6 +39,7 @@
 		"eslint-plugin-import": "^2.30.0",
 		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-promise": "^7.1.0",
+		"firebase-tools": "^13.23.0",
 		"html-loader": "^5.1.0",
 		"html-webpack-plugin": "^5.6.0",
 		"jest": "^29.7.0",

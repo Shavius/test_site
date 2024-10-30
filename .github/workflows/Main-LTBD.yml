@@ -12,6 +12,11 @@ on:
             - "src/**"
         branches: ["main"]
 
+permissions:
+    checks: write
+    contents: read
+    pull-requests: write
+
 jobs:
     MainLintTestBuild:
         runs-on: ubuntu-latest
@@ -58,11 +63,12 @@ jobs:
             - name: Start Build
               run: npm run build
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@v4
+            - name: FireBase to Pre-Deploy
+              uses: FirebaseExtended/action-hosting-deploy@v0
               with:
-                  path: dist
-                  name: dist-FB-Pre-Deploy
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAVA_TEST_SITE }}
+                  projectId: shava-test-site
 
     FireBase-Deploy:
         environment: FireBase-Deploy
@@ -85,8 +91,10 @@ jobs:
             - name: Start Build
               run: npm run build
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@v4
+            - name: FireBase to Deploy
+              uses: FirebaseExtended/action-hosting-deploy@v0
               with:
-                  path: dist
-                  name: dist-FB-Deploy
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAVA_TEST_SITE }}
+                  channelId: live
+                  projectId: shava-test-site
