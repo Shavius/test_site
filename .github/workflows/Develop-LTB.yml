@@ -1,4 +1,4 @@
-name: Develop-Echo-Print
+name: Develop-LTB
 
 on:
     push:
@@ -13,14 +13,20 @@ on:
         branches: ["develop"]
 
 jobs:
-    DevelopEchoPrint1:
+    DevelopLint:
         runs-on: ubuntu-latest
         steps:
-            - name: Echo Test 1
-              run: echo test 1
+            - name: Echo Lint
+              run: echo lint
 
-    DevelopEchoPrint2:
+    DevelopTest:
         runs-on: ubuntu-latest
         steps:
-            - name: Echo Test 2
-              run: echo test 2
+            - name: Echo Test
+              run: echo test
+
+    DevelopBuild:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Build
+              run: echo build

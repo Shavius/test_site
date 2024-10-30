@@ -1,0 +1,44 @@
+name: Main-LTBD
+
+on:
+    push:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["main"]
+    pull_request:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["main"]
+
+jobs:
+    MainLintTestBuild:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Lint
+              run: echo lint
+
+            - name: Echo Test
+              run: echo test
+
+            - name: Echo Build
+              run: echo build
+
+    FireBase-Pre-Deploy:
+        environment: FireBase-Pre-Deploy
+        needs: [MainLintTestBuild]
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo FB-Pre-Deploy
+              run: echo FB-Pre-Deploy
+
+    FireBase-Deploy:
+        environment: FireBase-Deploy
+        needs: [MainLintTestBuild]
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo FB-Deploy
+              run: echo FB-Deploy
