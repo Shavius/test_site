@@ -1,0 +1,203 @@
+.modal {
+	position: relative;
+	top: 5px;
+	left: 0;
+	z-index: 500;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-width: $PageWidth;
+	max-height: 100%;
+	padding: 5px;
+	margin: 0 auto;
+
+	&-scroll {
+		overflow-y: auto;
+	}
+
+	&__title {
+		font-size: 20px;
+		margin: 10px 0;
+		text-align: center;
+
+		&--error {
+			color: red;
+		}
+	}
+
+	&__title-serial {
+		text-align: center;
+		font-size: 18px;
+		margin: 10px 0;
+	}
+
+	&__inputs {
+		margin: 10px;
+	}
+
+	&__loader {
+		border: 10px solid #f3f3f3;
+		border-top: 10px solid #3498db;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		animation: spin 2s linear infinite;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+.modal-inputs {
+	&__item-text {
+		margin-bottom: 5px;
+	}
+
+	&__item-input {
+		border: 1px solid black;
+		outline: none;
+		width: 100%;
+		padding: 2px;
+		margin-bottom: 5px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.modal-inputs-block {
+	display: flex;
+
+	&__text-change {
+		display: inline-block;
+		border: 1px solid black;
+		margin-left: 5px;
+		padding: 2px 5px;
+		cursor: pointer;
+		user-select: none;
+		background-color: silver;
+		align-self: baseline;
+	}
+
+	&__delete-img {
+		display: inline-block;
+		border: 1px solid black;
+		margin-left: 5px;
+		padding: 2px 5px;
+		cursor: pointer;
+		user-select: none;
+		background-color: silver;
+		align-self: baseline;
+		transition: background-color 0.2s;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+	}
+}
+
+.modal-buttons {
+	text-align: center;
+	margin-bottom: 10px;
+
+	&__item {
+		@include ButtonBG();
+		display: inline-block;
+		width: 100px;
+		padding: 5px 10px;
+		margin-right: 10px;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+.modal-links-inputs {
+	text-align: center;
+	margin: 10px;
+
+	&__button {
+		@include ButtonBG(grey);
+		display: inline-block;
+		padding: 5px 10px;
+
+		&:active {
+			@include ButtonClickBG(silver);
+		}
+	}
+}
+
+.modal-link-inputs {
+	border: 1px solid black;
+	text-align: left;
+	padding: 10px;
+	margin: 10px 0;
+
+	input {
+		outline: none;
+		border: 1px solid black;
+		padding: 2px;
+		width: 100%;
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__website-address-field {
+		text-align: center;
+	}
+
+	&__website-address-button {
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 5px;
+		user-select: none;
+		cursor: pointer;
+		padding: 5px 10px;
+		background-color: silver;
+		transition: background-color 0.2s;
+
+		&:active {
+			background-color: grey;
+			transition: background-color 0.2s;
+		}
+	}
+}
+
+.modal-link-name {
+	margin-bottom: 5px;
+}
+
+.modal-link-top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal-link-delete {
+	border: 1px solid black;
+	align-self: flex-start;
+	@include ButtonBG();
+	padding: 0 5px;
+
+	&:active {
+		@include ButtonClickBG();
+	}
+}

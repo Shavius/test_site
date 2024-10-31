@@ -1,0 +1,26 @@
+.links-button--color {
+	background-color: green;
+}
+
+.card-links {
+	text-align: center;
+
+	&__title {
+		margin-bottom: 5px;
+	}
+
+	&__item {
+		display: block;
+		border: 1px solid black;
+		background-color: silver;
+		color: black;
+		cursor: pointer;
+		user-select: none;
+		padding: 5px;
+		margin-bottom: 10px;
+	}
+
+	&--hidden {
+		display: none;
+	}
+}
