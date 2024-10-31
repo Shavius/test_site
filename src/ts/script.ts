@@ -1,4 +1,5 @@
 import "../index.html";
+import "../404.html";
 import "../scss/style.scss";
 import User from "./modules/User";
 
