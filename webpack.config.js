@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const DotenvWebpack = require("dotenv-webpack");
 
 let mode = "development";
 let devtool = "source-map";
@@ -27,6 +28,10 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: "style/style.css",
+		}),
+		new DotenvWebpack({
+			path: ".env",
+			systemvars: true,
 		}),
 	],
 
