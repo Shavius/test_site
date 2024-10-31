@@ -44,6 +44,8 @@ jobs:
 
     FireBase-Pre-Deploy:
         environment: FireBase-Pre-Deploy
+        env:
+            MODE_ENV_SITE: ${{ vars.MODE_ENV_SITE}}
         needs: [MainLintTestBuild]
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
