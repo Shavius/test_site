@@ -1,4 +1,4 @@
-export default class User {
+export default class MockUser {
 	protected name: string;
 	protected age: number;
 	protected race: string;
@@ -6,7 +6,7 @@ export default class User {
 	constructor(userName: string, userAge: number) {
 		this.name = userName;
 		this.age = userAge;
-		this.race = "Human";
+		this.race = "Mock Human";
 	}
 
 	public getInfo(): string {
