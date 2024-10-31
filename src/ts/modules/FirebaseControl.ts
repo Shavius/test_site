@@ -1,10 +1,15 @@
 import IDataCard from "../interfaces/IDataCard";
 
+interface UserInfo {
+	idToken: string;
+	localId: string;
+}
+
 export default class FirebaseControl {
 	apiKey = process.env.API_KEY || "";
 	url = process.env.URL || "";
 
-	loginWithEmailPassword = async (email: string, password: string): Promise<string> => {
+	loginWithEmailPassword = async (email: string, password: string): Promise<UserInfo | null> => {
 		const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`;
 		const payload = {
 			email,
@@ -24,19 +29,22 @@ export default class FirebaseControl {
 			const respo = response.json();
 			console.error("Ошибка аутентификации", respo);
 
-			return "error";
+			return null;
 		}
 
 		const data = await response.json();
 
 		// Вы можете сохранить токен для дальнейшего использования
-		const { idToken } = data;
+		const dataUser = {
+			idToken: data.idToken,
+			localId: data.localId,
+		};
 
-		return idToken;
+		return dataUser;
 	};
 
-	sendDataToDatabase = async (idToken: string, userName: string, data: IDataCard[] | []): Promise<boolean> => {
-		const url = `${this.url}${userName}.json?auth=${idToken}`;
+	sendDataToDatabase = async (idToken: string, localId: string, data: IDataCard[] | []): Promise<boolean> => {
+		const url = `${this.url}/${localId}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {
@@ -58,8 +66,8 @@ export default class FirebaseControl {
 		}
 	};
 
-	getDataFromDatabase = async (idToken: string, userName: string): Promise<IDataCard[] | null | []> => {
-		const url = `${this.url}${userName}.json?auth=${idToken}`;
+	getDataFromDatabase = async (idToken: string, localId: string): Promise<IDataCard[] | null | []> => {
+		const url = `${this.url}/${localId}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {

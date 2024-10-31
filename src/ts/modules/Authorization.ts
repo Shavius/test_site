@@ -28,8 +28,8 @@ export default class Authorization {
 		this.modal.modalLoad("Йде перевірка зачикайте");
 		try {
 			const firebase = new FirebaseControl();
-			const token = await firebase.loginWithEmailPassword(email, password);
-			if (token !== "error") {
+			const userInfo = await firebase.loginWithEmailPassword(email, password);
+			if (userInfo !== null) {
 				const userData: IUserData = { email, password };
 				const userDataText = JSON.stringify(userData);
 				localStorage.setItem("userData", userDataText);
