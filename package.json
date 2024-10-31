@@ -18,6 +18,8 @@
 		"all": "npm run lint & npm run pre",
 		"firebase": "firebase",
 		"deploy": "firebase deploy",
+		"deploy:pre": "firebase hosting:channel:deploy Pre-Deploy --expires 1d",
+		"fb:dell": "firebase hosting:channel:delete Pre-Deploy",
 		"fb:list": "firebase hosting:channel:list"
 	},
 	"keywords": [],
