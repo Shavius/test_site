@@ -1,0 +1,23 @@
+.modal-authorization {
+	padding: 0 5px;
+	max-width: 90%;
+	margin: 0 auto;
+
+	label {
+		display: block;
+		margin: 5px 0;
+	}
+
+	input {
+		outline: none;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 4px;
+		font-family: inherit;
+		width: 100%;
+	}
+}
+
+.modal-authorization__password {
+	margin-bottom: 10px;
+}

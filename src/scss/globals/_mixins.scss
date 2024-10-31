@@ -1,5 +1,12 @@
-@mixin BlockDefault($BG-Color: $Color4) {
+@mixin ButtonBG($bgColor: silver) {
 	border: 1px solid black;
-	border-radius: 5px;
-	background-color: $BG-Color;
+	user-select: none;
+	cursor: pointer;
+	background-color: $bgColor;
+	transition: background-color 0.2s;
+}
+
+@mixin ButtonClickBG($bgColor: $ColorClick) {
+	background-color: $bgColor;
+	transition: background-color 0.2s;
 }

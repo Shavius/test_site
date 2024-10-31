@@ -1,0 +1,39 @@
+html,
+body {
+	font-family: "Roboto", sans-serif;
+	font-style: normal;
+	font-size: 16px;
+}
+
+body {
+	background-color: $ColorBackgroundPage;
+}
+
+.body-lock {
+	overflow: hidden;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.wrapper {
+	max-width: $PageWidth;
+	margin: 0 auto;
+
+	&--top {
+		overflow: hidden;
+		position: relative;
+		top: auto;
+		left: auto;
+	}
+
+	&--bottom {
+		margin-top: 90px;
+	}
+}

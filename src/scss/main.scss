@@ -1,0 +1,15 @@
+@import "globals/normalize.scss";
+@import "globals/fonts";
+@import "globals/variables";
+@import "globals/mixins";
+@import "globals/main";
+
+@import "partials/header";
+@import "partials/main";
+@import "partials/serial-card";
+@import "partials/card-links";
+@import "partials/modal-overlay";
+@import "partials/modal";
+@import "partials/modal-authorization";
+@import "partials/card-info";
+@import "partials/404";
