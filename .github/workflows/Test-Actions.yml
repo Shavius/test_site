@@ -1,4 +1,4 @@
-name: Test-Actions
+name: Test-Actions ⚡
 
 on:
     workflow_dispatch:
@@ -15,3 +15,11 @@ jobs:
         steps:
             - name: Echo test 1
               run: echo test 1 - ${{ inputs.release_notes }}
+
+    TestFromEnvironments:
+        needs: [EchoTest1]
+        environment: Test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo test environments
+              run: echo test environments
