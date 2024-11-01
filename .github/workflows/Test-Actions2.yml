@@ -8,7 +8,7 @@ on:
         branches: ["main"]
 
 env:
-    ART: ${{ github.event_name }}
+    ART: ${{ github.ref_name }}
 
 jobs:
     EchoTest1:
