@@ -1,16 +1,16 @@
-name: Main-LTBD
+name: Release-LTBD 🚀
 
 on:
     push:
         paths:
             - ".github/workflows/*.yml"
             - "src/**"
-        branches: ["main"]
+        branches: ["release/*"]
     pull_request:
         paths:
             - ".github/workflows/*.yml"
             - "src/**"
-        branches: ["main"]
+        branches: ["release/*"]
 env:
     API_KEY: ${{ secrets.API_KEY }}
     URL: ${{ secrets.URL }}
@@ -21,7 +21,7 @@ permissions:
     pull-requests: write
 
 jobs:
-    MainLintTestBuild:
+    ReleaseLintTestBuild:
         runs-on: ubuntu-latest
         steps:
             - name: Get repository code
@@ -49,7 +49,7 @@ jobs:
         environment: FireBase-Pre-Deploy
         env:
             MODE_ENV_SITE: ${{ vars.MODE_ENV_SITE}}
-        needs: [MainLintTestBuild]
+        needs: [ReleaseLintTestBuild]
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
@@ -79,7 +79,7 @@ jobs:
 
     FireBase-Deploy:
         environment: FireBase-Deploy
-        needs: [MainLintTestBuild]
+        needs: [ReleaseLintTestBuild]
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
