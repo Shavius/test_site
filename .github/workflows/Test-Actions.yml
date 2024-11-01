@@ -20,6 +20,7 @@ jobs:
         needs: [EchoTest1]
         environment: Test
         runs-on: ubuntu-latest
+        timeout-minutes: 1
         steps:
             - name: Echo test environments
               run: echo test environments
