@@ -2,6 +2,8 @@
 
 ## This is test project
 
+### packages
+
 ```json
 "devDependencies": {
 		"@babel/core": "^7.25.2",
@@ -39,4 +41,26 @@
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.1.0"
 	}
+```
+
+### Comands
+
+```json
+"start": "cross-env NODE_ENV=development webpack server",
+"build": "cross-env NODE_ENV=production webpack",
+"dev": "cross-env NODE_ENV=development webpack",
+"clear": "rd /s /q dist",
+"test": "jest",
+"test-w": "jest --watchAll",
+"test-c": "jest --coverage",
+"lint": "eslint --ext ts ./",
+"lint:fix": "eslint --ext ts --fix ./",
+"pre:fix": "prettier --write ./",
+"pre": "prettier --check ./",
+"all": "npm run lint & npm run pre",
+"firebase": "firebase",
+"deploy": "firebase deploy",
+"deploy:pre": "firebase hosting:channel:deploy Pre-Deploy --expires 1d",
+"fb:dell": "firebase hosting:channel:delete Pre-Deploy",
+"fb:list": "firebase hosting:channel:list"
 ```
