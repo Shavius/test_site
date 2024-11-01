@@ -7,12 +7,10 @@ on:
     pull_request:
         branches: ["main"]
 
-env:
-    ART: ${{ github.ref_name == 'main' }}
-
 jobs:
     EchoTest1:
+        if: ${{ github.ref_name == 'main' }}
         runs-on: ubuntu-latest
         steps:
             - name: Echo test 1
-              run: echo test ${{ env.ART }}
+              run: echo test 1
