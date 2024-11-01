@@ -23,3 +23,5 @@ controlButtons.init();
 
 const userCheck = new UserCheck();
 userCheck.init();
+
+console.log("Test 1");
