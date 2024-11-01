@@ -5,12 +5,12 @@ on:
         paths:
             - ".github/workflows/*.yml"
             - "src/**"
-        branches: ["release/*"]
+        branches: ["release/**"]
     pull_request:
         paths:
             - ".github/workflows/*.yml"
             - "src/**"
-        branches: ["release/*"]
+        branches: ["release/**"]
 env:
     API_KEY: ${{ secrets.API_KEY }}
     URL: ${{ secrets.URL }}
